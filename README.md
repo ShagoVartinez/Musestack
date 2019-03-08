@@ -1,6 +1,8 @@
 # Musestack
 A Java artists' database test
+
 MUSES’STACK: Gestión para base de datos sobre arte
+
 	La carga de información se realizará desde el folder  ‘saved data’ con archivos de distintos tipos (txt, binary).
 
 	Se cargará una tabla de artistas de servicio web en Json.
