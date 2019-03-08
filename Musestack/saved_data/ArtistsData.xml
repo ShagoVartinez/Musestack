@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Company>
+  <Artist>
+      <FirstName>Leonardo</FirstName>
+      <LastName>Davinci</LastName>
+      <ContactNo>69</ContactNo>
+      <Email>leitopopochito@gmail.com</Email>
+  </Artist>
+  <Artist>
+      <FirstName>Rafael</FirstName>
+      <LastName>Buonarotti</LastName>
+      <ContactNo>2198347</ContactNo>
+      <Email>rafaXd@gmail.com</Email>
+  </Artist>
+  <Artist>
+      <FirstName>Niccolo</FirstName>
+      <LastName>Maquiavelo</LastName>
+      <ContactNo>666</ContactNo>
+      <Email>iLoveBorgia@gmail.com</Email>
+  </Artist>
+</Company>
