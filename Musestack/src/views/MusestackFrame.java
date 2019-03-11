@@ -2,7 +2,6 @@ package views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,7 +18,7 @@ public class MusestackFrame extends JFrame{
 		setTitle("Muse'stack");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
-//		setIconImage(new ImageIcon(getClass().getResource("/imgs/icon.png")).getImage());
+		setIconImage(new ImageIcon(getClass().getResource("/imgs/icon.jpg")).getImage());
 		setJMenuBar(new MainBar(controller));
 		
 		JPanel mainPnl = new JPanel();

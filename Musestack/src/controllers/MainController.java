@@ -13,7 +13,7 @@ import persistence.FileManager;
 import views.MusestackFrame;
 
 public class MainController implements ActionListener{
-	//3228823147
+
 	private FileManager fMng;
 	private ArtistDao artistDao;//Dao manage on controller, arrays' creation
 	private MusestackFrame frame;
@@ -38,14 +38,14 @@ public class MainController implements ActionListener{
 	}
 
 	private void init() {
-		refreshArtistData();
+//		refreshArtistData();
 	}
 
-	private void refreshArtistData() {
-		try {
-			fMng.readArtists();
-		} catch (SAXException | IOException | ParserConfigurationException e) {
-			e.printStackTrace();
-		}
-	}
+//	private void refreshArtistData() {
+//		try {
+//			fMng.readArtists();
+//		} catch (SAXException | IOException | ParserConfigurationException e) {
+//			e.printStackTrace();
+//		}
+//	}
 }
