@@ -1,33 +1,50 @@
 package models;
 
-public abstract class  Person{
+public abstract class Person {
 	
-	int id;
-	String name;
-	String email;
-	int phone;
-	
-	public Person(int id, String name, String email, int phone) {
+	private long id;
+	private String photo;
+	private String firstName;
+	private String lastName;
+	private long phone;
+	private String city;
+
+	public Person(long id, String photo, String firstName, String lastName, long phone, String city) {
 		this.id = id;
-		this.name = name;
-		this.email = email;
+		this.photo = photo;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.phone = phone;
+		this.city = city;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getPhoto() {
+		return photo;
 	}
-	
-	public int getPhone() {
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public long getPhone() {
 		return phone;
 	}
-	
+
+	public String getCity() {
+		return city;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [id: " + id + ", photo: " + photo + ", firstName: " + firstName + ", lastName: " + lastName
+				+ ", phone: " + phone + ", city: " + city + "]";
+	}
 }

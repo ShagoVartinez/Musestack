@@ -2,30 +2,32 @@ package models;
 
 public class Artist extends Person{
 
+	private String address;
+	private String email;
 	private String password;
-	private Genre genre;
-
-	public Artist(int id, String name, String email, int phone, String password, Genre genre) {
-		super(id, name, email, phone);
-		this.id = id;
-		this.name = name;
+	
+	public Artist(long id, String photo, String firstName, String lastName, long phone, String city, String address,
+			String email, String password) {
+		super(id, photo, firstName, lastName, phone, city);
+		this.address = address;
 		this.email = email;
-		this.phone = phone;
 		this.password = password;
-		this.genre = genre;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	
+	public String getEmail() {
+		return email;
 	}
 	
 	public String getPassword() {
 		return password;
 	}
 	
-	public Genre getGenre() {
-		return genre;
-	}
-	
 	@Override
 	public String toString() {
-		return "\n\nname: " + name + "\nid:" + id + "\nemail: " + email + "\nphone: " + phone + "\npassword: " + password + "\ngenre: " + genre;
+		return "Artist [address: " + address + ", email: " + email + ", password: " + password + "]";
 	}
-	
 }

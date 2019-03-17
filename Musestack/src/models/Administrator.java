@@ -1,11 +1,13 @@
 package models;
 
-public class User extends Person{
+public class Administrator extends Person{
 
 	private String email;
 	private String password;
 
-	public User(long id, String photo, String firstName, String lastName, long phone, String city, String email,
+	
+
+	public Administrator(long id, String photo, String firstName, String lastName, long phone, String city, String email,
 			String password) {
 		super(id, photo, firstName, lastName, phone, city);
 		this.email = email;
@@ -22,6 +24,6 @@ public class User extends Person{
 
 	@Override
 	public String toString() {
-		return "User [email: " + email + ", password: " + password + "]";
+		return "Administrator [email=" + email + ", password=" + password + "]";
 	}
 }
