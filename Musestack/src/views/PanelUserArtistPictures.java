@@ -2,15 +2,12 @@ package views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -18,12 +15,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import controller.Actions;
 
-public class PanelUserPictures extends JPanel{
+public class PanelUserArtistPictures extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private Image img;
 	private JPanel panelHeader;
@@ -33,23 +29,17 @@ public class PanelUserPictures extends JPanel{
 	private JPanel panelContainArtists;
 	private JPanel panelPictures;
 	private JScrollPane jspArtists;
-	private JPanel panelFilter;
-	private JTextField searchSpace;
-	private JButton buttonSearch;
-	private JPanel panelText;
-	private JPanel panelSearchSpace;
-	private JPanel panel;
 	
-	public PanelUserPictures(ActionListener actionListener) {
+	public PanelUserArtistPictures(ActionListener actionListener, String author) {
 		img = new ImageIcon(getClass().getResource("/img/userWallpaper.png")).getImage();
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
-		initComponents(actionListener);
+		initComponents(actionListener, author);
 	}
 	
-	public void initComponents(ActionListener actionListener) {
+	public void initComponents(ActionListener actionListener, String author) {
 		headerUserWindow(actionListener);
-		panelArtists(actionListener);
+		panelArtists(actionListener, author);
 	}
 	
 	public void headerUserWindow(ActionListener actionListener) {
@@ -79,71 +69,26 @@ public class PanelUserPictures extends JPanel{
 		buttonBack.setContentAreaFilled(false);
 		buttonBack.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
 		buttonBack.addActionListener(actionListener);
-		buttonBack.setActionCommand(Actions.PANEL_INITIAL_USER.toString());
+		buttonBack.setActionCommand(Actions.PANEL_LOGIN_USER.toString());
 		panelHeader.add(buttonBack, BorderLayout.LINE_END);
 		
 		add(panelHeader);
 	}
 	
-	public void panelArtists(ActionListener actionListener) {
+	public void panelArtists(ActionListener actionListener, String author) {
 		panelContainArtists = new JPanel();
 		panelContainArtists.setOpaque(false);
 		panelContainArtists.setLayout(new BorderLayout());
 		
-		JLabel title = new JLabel("Obras", SwingConstants.CENTER);
-		title.setFont(MusestackFonts.USER_WINDOW_TITLE_LABELS_FONT);
+		JLabel title = new JLabel("Obras de "+author, SwingConstants.CENTER);
+		title.setFont(new Font("Helvetica", Font.BOLD, 17));
 		title.setForeground(Color.decode("#FFFFFF"));
 		title.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 		panelContainArtists.add(title, BorderLayout.PAGE_START);
 		
-		
-		panelFilter = new JPanel();
-		panelFilter.setOpaque(false);
-		panelFilter.setBackground(Color.decode("#FFFFFF"));
-		panelFilter.setLayout(new BoxLayout(panelFilter, BoxLayout.Y_AXIS));
-		
-		panelText = new JPanel();
-		panelText.setOpaque(false);
-		
-		JLabel text = new JLabel("Filtrar por nombre", SwingConstants.CENTER);
-		text.setForeground(Color.decode("#000000"));
-		text.setFont(new Font("Helvetica", Font.BOLD, 15));
-		panelText.add(text);
-		
-		panelFilter.add(panelText);
-		
-		panelSearchSpace = new JPanel();
-		panelSearchSpace.setOpaque(false);
-		panelSearchSpace.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-		
-		panel = new RoundedPanel(40, Color.decode("#595959"));
-		panel.setPreferredSize(new Dimension(220, 45));
-		panel.setBackground(Color.decode("#000000"));
-		
-		searchSpace = new JTextField("Nombre");
-		searchSpace.setBackground(Color.decode("#000000"));
-		searchSpace.setBorder(BorderFactory.createEmptyBorder());
-		searchSpace.setForeground(Color.decode("#595959"));
-		searchSpace.setPreferredSize(new Dimension(150, 30));
-		searchSpace.setFont(new Font("Nunito Sans", Font.PLAIN, 16));
-		searchSpace.setCursor(new Cursor(Cursor.TEXT_CURSOR));
-		panel.add(searchSpace);
-		
-		buttonSearch = new JButton(new ImageIcon(getClass().getResource("/img/search.png")));
-		buttonSearch.setFocusable(false);
-		buttonSearch.setBackground(Color.decode("#000001"));
-		buttonSearch.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		panel.add(buttonSearch);
-		
-		panelSearchSpace.add(panel);
-		
-		panelFilter.add(panelSearchSpace);
-		
-		panelContainArtists.add(panelFilter, BorderLayout.CENTER);
-		
 		panelPictures = new JPanel();
 		panelPictures.setOpaque(false);
-		int maxArtists = 5;
+		int maxArtists = 0;
 		if (maxArtists > 0) {
 			panelPictures.setLayout(new GridLayout(maxArtists, 1, 0, 50));
 			panelPictures.setBorder(BorderFactory.createEmptyBorder(20, 15, 0, 10));
@@ -157,13 +102,13 @@ public class PanelUserPictures extends JPanel{
 			panelPictures.setLayout(new GridLayout(3, 1, 0, 50));
 			panelPictures.setBorder(BorderFactory.createEmptyBorder(20, 15, 0, 10));
 			
-			JLabel message = new JLabel("<html><center>No hay pinturas registradas</center><html>", SwingConstants.CENTER);
+			JLabel message = new JLabel("<html><center>El artista seleccionado<br></br>no tiene obras</center><html>", SwingConstants.CENTER);
 			message.setFont(new Font("Helvetica", Font.BOLD, 17));
 			message.setForeground(Color.decode("#000000"));
 			panelPictures.add(message);
 		}
 		
-		panelContainArtists.add(panelPictures, BorderLayout.PAGE_END);
+		panelContainArtists.add(panelPictures, BorderLayout.CENTER);
 		
 		
 		jspArtists = new JScrollPane();

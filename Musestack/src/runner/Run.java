@@ -1,11 +1,13 @@
 package runner;
 
-import controllers.MainController;
+import java.io.IOException;
+
+import controller.Control;
 
 public class Run {
 	
-	public static void main(String[]run) {
-		new MainController();
+	public static void main(String[] args) throws IOException {
+		new Control();
 	}
 	
 }

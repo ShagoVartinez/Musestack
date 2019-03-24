@@ -1,5 +1,6 @@
 package models;
 
+
 public enum Genre {
 	ABSTRACCIONISMO("Abstraccionismo"),
 	CUBISMO("Cubismo"),
@@ -18,5 +19,4 @@ public enum Genre {
 	public String toString() {
 		return text;
 	}
-
 }

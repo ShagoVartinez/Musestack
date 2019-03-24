@@ -10,9 +10,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class BINARYManager {
-
-	public static ArrayList<Object[]> readAdministratorBinary(String fileName) {
+public class BINARYManager implements Persitence{
+	
+	//admins are saved in binary file
+	
+	@Override
+	public ArrayList<Object[]> readData(String fileName) {
 		ArrayList<Object[]> objectList = new ArrayList<>();
 		FileInputStream fileIS = null;
 		DataInputStream dataIS = null;
@@ -51,7 +54,8 @@ public class BINARYManager {
 		return objectList;
 	}
 	
-	public static void writeBinary(ArrayList<Object[]> objectList) throws IOException {
+	@Override
+	public void writeData(ArrayList<Object[]> objectList) throws IOException {
 		FileOutputStream fileOutputStream = null;
 		DataOutputStream dataOutputStream = null;
 		
@@ -88,5 +92,11 @@ public class BINARYManager {
 				System.out.println(e.getMessage());
 			}
 		}
+	}
+	
+	@Override
+	public ArrayList<Object> getObjectsList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

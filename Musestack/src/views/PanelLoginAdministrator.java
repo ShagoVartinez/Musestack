@@ -20,19 +20,16 @@ import javax.swing.border.TitledBorder;
 
 import controller.Actions;
 
-public class PanelLoginUser extends JPanel{
+public class PanelLoginAdministrator extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private Image img;
 	private JPanel panelLogin;
-	private JPanel panelRegister;
 	private JTextField ingressMail;
 	private JPasswordField ingressPassword;
 	private JButton buttonIngress;
-	private JButton buttonRegister;
-	private JButton buttonBack;
 
-	public PanelLoginUser(ActionListener actionListener) {
-		img = new ImageIcon(getClass().getResource("/img/userWallpaper.png")).getImage();
+	public PanelLoginAdministrator(ActionListener actionListener) {
+		img = new ImageIcon(getClass().getResource("/img/loginAdmin.png")).getImage();
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		initComponents(actionListener);
@@ -67,44 +64,20 @@ public class PanelLoginUser extends JPanel{
 				BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.decode("#595959")),
 						"Contraseña", TitledBorder.LEFT, TitledBorder.TOP, MusestackFonts.FOOTER_LABELS_FONT, MusestackColors.BORDER_TITLED_FOREGROUND_COLOR)));
 		panelLogin.add(ingressPassword);
+		
+		JSeparator js = new JSeparator(SwingConstants.HORIZONTAL);
+		js.setPreferredSize(new Dimension(220, 15));
+		js.setBackground(new Color(0, 0, 0, 0));
+		js.setForeground(new Color(0, 0, 0, 0));
+		panelLogin.add(js);
 
 		buttonIngress = new RoundedButton(50);
-		ButtonPreferences(buttonIngress, "Ingresar", 100, 50, Color.decode("#FFF34C"), Color.decode("#000000"));
+		ButtonPreferences(buttonIngress, "Ingresar", 100, 50, new Color(255, 255, 255, 180), Color.decode("#000000"));
 		buttonIngress.addActionListener(actionListener);
-		buttonIngress.setActionCommand(Actions.PANEL_INITIAL_USER.toString());
+		buttonIngress.setActionCommand(Actions.PANEL_INITIAL_ADMIN.toString());
 		panelLogin.add(buttonIngress);
 
 		add(panelLogin);
-
-		panelRegister = new JPanel();
-		panelRegister.setOpaque(false);
-
-		JLabel text = new JLabel("¿No tienes cuenta?", SwingConstants.CENTER);
-		text.setPreferredSize(new Dimension(200, 50));
-		text.setFont(MusestackFonts.USER_WINDOW_TEXT_LABELS_FONT);
-		text.setForeground(Color.decode("#FFFFFF"));
-		panelRegister.add(text);
-
-		buttonRegister = new RoundedButton(50);
-		ButtonPreferences(buttonRegister, "Registrarse", 120, 50, Color.decode("#000000"), Color.decode("#FFF34C"));
-		buttonRegister.addActionListener(actionListener);
-		buttonRegister.setActionCommand(Actions.PANEL_USER_REGISTER.toString());
-		panelRegister.add(buttonRegister);
-		
-		JSeparator js = new JSeparator(SwingConstants.HORIZONTAL);
-		js.setPreferredSize(new Dimension(220, 0));
-		panelRegister.add(js);
-		
-		buttonBack = new JButton();
-		buttonBack.setIcon(new ImageIcon(getClass().getResource("/img/back.png")));;
-		buttonBack.setFocusable(false);
-		buttonBack.setContentAreaFilled(false);
-		buttonBack.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
-		buttonBack.addActionListener(actionListener);
-		buttonBack.setActionCommand(Actions.GRAPH_ARTIST_BY_GENRE.toString());
-		panelRegister.add(buttonBack);
-
-		add(panelRegister);
 	}
 	
 	public void ButtonPreferences(JButton button, String text, int width, int height, Color background, Color foreground) {

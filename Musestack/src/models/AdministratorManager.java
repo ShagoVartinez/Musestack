@@ -1,6 +1,9 @@
 package models;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import persistence.TXTManager;
 
 public class AdministratorManager {
 	
@@ -21,6 +24,27 @@ public class AdministratorManager {
 	
 	public ArrayList<Administrator> getAdministratorList() {
 		return administratorList;
+	}
+	
+	public void readAdministrator() throws IOException {
+		String pathFile = "./resources/administrators.txt";
+		ArrayList<String> list = TXTManager.readUserTextFile(pathFile);
+		AdministratorManager aMng = new AdministratorManager();
+		for (int i = 0; i < list.size(); i++) {
+			String line = list.get(i);
+			String[] dataAdmin = line.split("/");
+			long id = Long.parseLong(dataAdmin[0]);
+			String photo = dataAdmin[1];
+			String firstName = dataAdmin[2];
+			String lastName = dataAdmin[3];
+			long phone = Long.parseLong(dataAdmin[4]);
+			String city = dataAdmin[5];
+			String email = dataAdmin[6];
+			String password = dataAdmin[7];
+			aMng.addAdministrator(aMng.createAdministrator(id, photo, firstName, 
+					lastName, phone, city, email, password));
+		}
+		System.out.println(list);
 	}
 	
 	public ArrayList<Object[]> createObjectForTable() {

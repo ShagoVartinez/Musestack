@@ -7,7 +7,6 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -76,13 +75,13 @@ public class PanelMainWindow extends JPanel{
 		panelSpace.setPreferredSize(new Dimension(0, (int)(HEIGHT*20/100)));
 		panelDown.add(panelSpace);
 		
-		footerPanel();
+		footerPanel(actionListener);
 		
 		add(panelDown, BorderLayout.PAGE_END);
 	}
 	
 	public void panelPlatforms(ActionListener actionListener) {
-		panelPlatforms = new RoundedPanel(70);
+		panelPlatforms = new RoundedPanel(70, new Color(0, 0, 0, 0));
 		panelPlatforms.setBackground(MusestackColors.PANEL_PLATAFORMS_COLOR);
 		FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
 		layout.setHgap((int)(WIDTH*5/100));
@@ -92,7 +91,7 @@ public class PanelMainWindow extends JPanel{
 		buttonArtist = new RoundedButton(150);
 		buttonPreferences(buttonArtist, "Artista", "/img/artist.png");
 		buttonArtist.addActionListener(actionListener);
-		buttonArtist.setActionCommand(Actions.PLATFORM_ARTIST.toString());
+		buttonArtist.setActionCommand(Actions.LOGIN_ARTIST.toString());
 		panelPlatforms.add(buttonArtist);
 		
 		buttonUser = new RoundedButton(150);
@@ -104,13 +103,13 @@ public class PanelMainWindow extends JPanel{
 		buttonAdministrator = new RoundedButton(150);
 		buttonPreferences(buttonAdministrator, "Administrador", "/img/administrator.png");
 		buttonAdministrator.addActionListener(actionListener);
-		buttonAdministrator.setActionCommand(Actions.PLATFORM_ADMINISTRATOR.toString());
+		buttonAdministrator.setActionCommand(Actions.LOGIN_ADMIN.toString());
 		panelPlatforms.add(buttonAdministrator);
 		
 		add(panelPlatforms, BorderLayout.CENTER);
 	}
 	
-	public void footerPanel() {
+	public void footerPanel(ActionListener actionListener) {
 		UIManager.put("ToolTip.background", Color.decode("#595959"));
 		UIManager.put("ToolTip.foreground", Color.decode("#FFFFFF"));
 		UIManager.put("ToolTip.border", BorderFactory.createLineBorder(Color.decode("#FFFFFF")));
@@ -144,14 +143,20 @@ public class PanelMainWindow extends JPanel{
 		
 		buttonFacebook = new JButton(new ImageIcon(getClass().getResource("/img/facebook.png")));
 		preferencesFooterButtons(buttonFacebook, "MusestackX");
+		buttonFacebook.addActionListener(actionListener);
+		buttonFacebook.setActionCommand(Actions.OPEN_FACEBOOK.toString());
 		panelContacts.add(buttonFacebook);
 
 		buttonTwitter = new JButton(new ImageIcon(getClass().getResource("/img/twitter.png")));
 		preferencesFooterButtons(buttonTwitter, "@MusestackX");
+		buttonTwitter.addActionListener(actionListener);
+		buttonTwitter.setActionCommand(Actions.OPEN_TWITER.toString());
 		panelContacts.add(buttonTwitter);
 		
 		buttonInstagram = new JButton(new ImageIcon(getClass().getResource("/img/instagram.png")));
 		preferencesFooterButtons(buttonInstagram, "@MusestackX");
+		buttonInstagram.addActionListener(actionListener);
+		buttonInstagram.setActionCommand(Actions.OPEN_INSTAGRAM.toString());
 		panelContacts.add(buttonInstagram);
 
 		buttonWhatsapp = new JButton(new ImageIcon(getClass().getResource("/img/whatsapp.png")));
@@ -172,6 +177,7 @@ public class PanelMainWindow extends JPanel{
 		button.setText(text);
 		button.setIcon(new ImageIcon(getClass().getResource(icon)));
 		button.setFocusable(false);
+		button.setContentAreaFilled(false);
 		button.setBackground(MusestackColors.BUTTON_PLATAFORMS_COLOR);
 		button.setFont(MusestackFonts.FOOTER_BUTTONS_FONT);
 		button.setForeground(MusestackColors.MAIN_WINDOW_BUTTONS_FOREGROUND_COLOR);

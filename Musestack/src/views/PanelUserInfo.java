@@ -5,31 +5,30 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
+
 import controller.Actions;
 
-public class PanelUserEvents extends JPanel{
+public class PanelUserInfo extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private Image img;
 	private JPanel panelHeader;
 	private RoundedButton userPhoto;
 	private JLabel nameUser;
 	private JButton buttonBack;
-	private JPanel panelContainEvents;
-	private JScrollPane jspEvents;
-	private JPanel panelEvents;
-	
-	public PanelUserEvents(ActionListener actionListener) {
+	private JPanel panelInfo;
+	private JLabel textInfo;
+
+	public PanelUserInfo(ActionListener actionListener) {
 		img = new ImageIcon(getClass().getResource("/img/userWallpaper.png")).getImage();
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
@@ -38,7 +37,7 @@ public class PanelUserEvents extends JPanel{
 	
 	public void initComponents(ActionListener actionListener) {
 		headerUserWindow(actionListener);
-		panelEvents();
+		panelInfo();
 	}
 	
 	public void headerUserWindow(ActionListener actionListener) {
@@ -74,49 +73,34 @@ public class PanelUserEvents extends JPanel{
 		add(panelHeader);
 	}
 	
-	public void panelEvents() {
-		panelContainEvents = new JPanel();
-		panelContainEvents.setOpaque(false);
-		panelContainEvents.setLayout(new BorderLayout());
+	public void panelInfo() {
+		panelInfo = new JPanel();
+		panelInfo.setOpaque(false);
+//		panelInfo.setBorder(BorderFactory.createEmptyBorder(3, 5, 0, 0));;
 		
-		JLabel title = new JLabel("Eventos", SwingConstants.CENTER);
-		title.setFont(MusestackFonts.USER_WINDOW_TITLE_LABELS_FONT);
-		title.setForeground(Color.decode("#FFFFFF"));
-		title.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
-		panelContainEvents.add(title, BorderLayout.PAGE_START);
+		textInfo = new JLabel();
+		textInfo.setText("<html>Musestack fue creada con el proposito<br></br>"
+				+ "de promover el  talento de los artistas<br></br>"
+				+ "del departamento X. En esta  aplicación<br></br>"
+				+ "podra ver los eventos que se realizaran<br></br>"
+				+ "en  las  proximas  fechas,  la lista de<br></br>"
+				+ "artistas del  departamneto registrados,<br></br>"
+				+ "asi como  sus respectivas obras, ademas<br></br>"
+				+ " usted podra calificar  cada una de las<br></br>"
+				+ "obras y dar una critica a estas, ya que<br></br>"
+				+ "su  opinion es de  importancia para  el<br></br>"
+				+ "artista.<br></br><br></br>"
+				+ "Nos puede encontrar en redes sociales<br></br>"
+				+ "Facebook: Musestack oficial<br></br>"
+				+ "Twitter: @Musestack<br></br>"
+				+ "Instagram: @Musestack<br></br>"
+				+ "Whatsapp: 3228823147<br></br>"
+				+ "MyMail: musestack@mymail.com</html>");
+		textInfo.setFont(new Font("Helvetica", Font.PLAIN, 16));
+		textInfo.setForeground(Color.decode("#000000"));
+		panelInfo.add(textInfo);
 		
-		panelEvents = new JPanel();
-		panelEvents.setOpaque(false);
-		int maxEvents = 0;
-		if (maxEvents > 0) {
-			panelEvents.setLayout(new GridLayout(maxEvents, 1, 30, 30));
-			panelEvents.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 20));
-			
-			for (int i = 0; i < maxEvents; i++) {
-				CardEvents ce = new CardEvents("Evento X", "X", "Calle X No. X", "X", "xx/xx/xxxx", "xx/xx/xxxx");
-				ce.setOpaque(false);
-				panelEvents.add(ce);
-			}
-		} else {
-			panelEvents.setLayout(new GridLayout(3, 1, 30, 30));
-			panelEvents.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 20));
-			
-			JLabel message = new JLabel("No hay eventos disponibles");
-			message.setFont(new Font("Helvetica", Font.BOLD, 17));
-			message.setForeground(Color.decode("#000000"));
-			panelEvents.add(message);
-		}
-		
-		panelContainEvents.add(panelEvents, BorderLayout.CENTER);
-		
-		
-		jspEvents = new JScrollPane();
-		jspEvents.setBackground(new Color(0, 0, 0, 0));
-		jspEvents.getViewport().setOpaque(false);
-		jspEvents.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		jspEvents.setViewportView(panelContainEvents);
-		jspEvents.setPreferredSize(new Dimension(0, 400));
-		add(jspEvents, BorderLayout.CENTER);
+		add(panelInfo);
 	}
 	
 	protected void paintComponent(Graphics g) {

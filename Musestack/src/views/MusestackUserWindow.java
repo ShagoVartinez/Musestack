@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
 public class MusestackUserWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JPanel panelActual;
@@ -17,11 +16,16 @@ public class MusestackUserWindow extends JFrame{
 	private PanelUserEvents panelUserEvents;
 	private PanelUserArtists panelUserArtists;
 	private PanelUserPictures panelUserPictures;
+	private PanelUserArtistPictures panelUserArtistPictures;
+	private PanelCalification panelCalification;
+	private PanelUserInfo panelUserInfo;
+	private PanelTopCalifications panelTopCalifications;
 
 	public MusestackUserWindow(ActionListener actionListener) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		setSize(new Dimension(300, 480));
+		this.setLocationRelativeTo(null);
 		setTitle("Musestack");
 		setIconImage(new ImageIcon(getClass().getResource("/img/MusestackIcon.png")).getImage());
 		
@@ -38,6 +42,10 @@ public class MusestackUserWindow extends JFrame{
 		panelUserEvents = new PanelUserEvents(actionListener);
 		panelUserArtists = new PanelUserArtists(actionListener);
 		panelUserPictures = new PanelUserPictures(actionListener);
+		panelUserArtistPictures = new PanelUserArtistPictures(actionListener, "Osama Bin Laden");
+		panelCalification = new PanelCalification(actionListener);
+		panelUserInfo = new PanelUserInfo(actionListener);
+		panelTopCalifications = new PanelTopCalifications(actionListener);
 		add(panelLoginUser, BorderLayout.CENTER);
 		
 		panelActual = panelLoginUser;
@@ -73,5 +81,21 @@ public class MusestackUserWindow extends JFrame{
 	
 	public void changeToPanelUserPictures() {
 		changePanel(panelUserPictures);
+	}
+	
+	public void changeToPanelUserInfo() {
+		changePanel(panelUserInfo);
+	}
+	
+	public void changeToPanelUserArtistPictures() {
+		changePanel(panelUserArtistPictures);
+	}
+	
+	public void changeToPanelCalification() {
+		changePanel(panelCalification);
+	}
+	
+	public void changeToPanelTopCalifications() {
+		changePanel(panelTopCalifications);
 	}
 }

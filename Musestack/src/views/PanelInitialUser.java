@@ -31,6 +31,7 @@ public class PanelInitialUser extends JPanel{
 	private JButton buttonBack;
 	private JPanel panelFooter;
 	private JButton buttonInfo;
+	private JButton buttonTopCalifications;
 	
 	public PanelInitialUser(ActionListener actionListener) {
 		img = new ImageIcon(getClass().getResource("/img/userWallpaper.png")).getImage();
@@ -82,7 +83,8 @@ public class PanelInitialUser extends JPanel{
 		panelMenu = new JPanel();
 		panelMenu.setOpaque(false);
 		panelMenu.setPreferredSize(new Dimension(0, 480));
-		panelMenu.setLayout(new FlowLayout(FlowLayout.LEADING, 50, 20));
+		panelMenu.setLayout(new FlowLayout(FlowLayout.LEADING, 60, 20));
+		panelMenu.setBorder(BorderFactory.createEmptyBorder(0, -20, 0, 0));
 		
 		buttonEvents = new JButton();
 		preferncesButtons(buttonEvents, "Eventos");
@@ -102,6 +104,12 @@ public class PanelInitialUser extends JPanel{
 		buttonPictures.setActionCommand(Actions.PANEL_USER_PICTURES.toString());
 		panelMenu.add(buttonPictures);
 		
+		buttonTopCalifications = new JButton();
+		preferncesButtons(buttonTopCalifications, "Top calificaciones");
+		buttonTopCalifications.addActionListener(actionListener);
+		buttonTopCalifications.setActionCommand(Actions.PANEL_TOP_CALIFICATIONS.toString());
+		panelMenu.add(buttonTopCalifications);
+		
 		add(panelMenu);
 	}
 	
@@ -120,6 +128,8 @@ public class PanelInitialUser extends JPanel{
 		buttonInfo.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#595959")),
 				BorderFactory.createEmptyBorder(3, 5, 3, 5)));
 		buttonInfo.setBackground(Color.decode("#000000"));
+		buttonInfo.addActionListener(actionListener);
+		buttonInfo.setActionCommand(Actions.PANEL_USER_INFO.toString());
 		panelFooter.add(buttonInfo, BorderLayout.LINE_END);
 		
 		
@@ -128,8 +138,7 @@ public class PanelInitialUser extends JPanel{
 	
 	public void preferncesButtons(JButton button, String text) {
 		button.setText(text);
-		button.setIcon(new ImageIcon(getClass().getResource("/img/viñeta.png")));
-//		button.setPreferredSize(new Dimension(width, height));
+		button.setIcon(new ImageIcon(getClass().getResource("/img/vineta.png")));
 		button.setOpaque(false);
 		button.setContentAreaFilled(false);
 		button.setBorderPainted(false);
@@ -138,6 +147,7 @@ public class PanelInitialUser extends JPanel{
 		button.setVerticalTextPosition(SwingConstants.CENTER);
 		button.setForeground(Color.decode("#FFFFFF"));
 		button.setFont(new Font("Helvetica", Font.PLAIN, 20));
+		button.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
 	}
 	
 	protected void paintComponent(Graphics g) {

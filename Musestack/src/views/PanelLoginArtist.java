@@ -20,7 +20,7 @@ import javax.swing.border.TitledBorder;
 
 import controller.Actions;
 
-public class PanelLoginUser extends JPanel{
+public class PanelLoginArtist extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private Image img;
 	private JPanel panelLogin;
@@ -29,10 +29,9 @@ public class PanelLoginUser extends JPanel{
 	private JPasswordField ingressPassword;
 	private JButton buttonIngress;
 	private JButton buttonRegister;
-	private JButton buttonBack;
 
-	public PanelLoginUser(ActionListener actionListener) {
-		img = new ImageIcon(getClass().getResource("/img/userWallpaper.png")).getImage();
+	public PanelLoginArtist(ActionListener actionListener) {
+		img = new ImageIcon(getClass().getResource("/img/loginArtist.png")).getImage();
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		initComponents(actionListener);
@@ -69,9 +68,9 @@ public class PanelLoginUser extends JPanel{
 		panelLogin.add(ingressPassword);
 
 		buttonIngress = new RoundedButton(50);
-		ButtonPreferences(buttonIngress, "Ingresar", 100, 50, Color.decode("#FFF34C"), Color.decode("#000000"));
+		ButtonPreferences(buttonIngress, "Ingresar", 100, 50, new Color(255, 66, 116, 210), Color.decode("#000000"));
 		buttonIngress.addActionListener(actionListener);
-		buttonIngress.setActionCommand(Actions.PANEL_INITIAL_USER.toString());
+		buttonIngress.setActionCommand(Actions.PANEL_INITIAL_ARTIST.toString());
 		panelLogin.add(buttonIngress);
 
 		add(panelLogin);
@@ -79,14 +78,14 @@ public class PanelLoginUser extends JPanel{
 		panelRegister = new JPanel();
 		panelRegister.setOpaque(false);
 
-		JLabel text = new JLabel("¿No tienes cuenta?", SwingConstants.CENTER);
+		JLabel text = new JLabel("¿No estas registrado?", SwingConstants.CENTER);
 		text.setPreferredSize(new Dimension(200, 50));
 		text.setFont(MusestackFonts.USER_WINDOW_TEXT_LABELS_FONT);
-		text.setForeground(Color.decode("#FFFFFF"));
+		text.setForeground(Color.decode("#000000"));
 		panelRegister.add(text);
 
 		buttonRegister = new RoundedButton(50);
-		ButtonPreferences(buttonRegister, "Registrarse", 120, 50, Color.decode("#000000"), Color.decode("#FFF34C"));
+		ButtonPreferences(buttonRegister, "Registrarse", 120, 50, new Color(0, 0, 0, 210), Color.decode("#FF4274"));
 		buttonRegister.addActionListener(actionListener);
 		buttonRegister.setActionCommand(Actions.PANEL_USER_REGISTER.toString());
 		panelRegister.add(buttonRegister);
@@ -95,15 +94,6 @@ public class PanelLoginUser extends JPanel{
 		js.setPreferredSize(new Dimension(220, 0));
 		panelRegister.add(js);
 		
-		buttonBack = new JButton();
-		buttonBack.setIcon(new ImageIcon(getClass().getResource("/img/back.png")));;
-		buttonBack.setFocusable(false);
-		buttonBack.setContentAreaFilled(false);
-		buttonBack.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
-		buttonBack.addActionListener(actionListener);
-		buttonBack.setActionCommand(Actions.GRAPH_ARTIST_BY_GENRE.toString());
-		panelRegister.add(buttonBack);
-
 		add(panelRegister);
 	}
 	

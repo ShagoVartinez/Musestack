@@ -85,7 +85,7 @@ public class PanelUserRegister extends JPanel{
 		panelSelectPhoto.setOpaque(false);
 		panelSelectPhoto.setBorder(BorderFactory.createEmptyBorder(-5, 50, -5, 50));
 		
-		selectPhoto = new JButton("Foto", new ImageIcon(getClass().getResource("/imgUsers/user.png")));
+		selectPhoto = new JButton("Foto", new ImageIcon(getClass().getResource("/img/foto.png")));
 		selectPhoto.setFocusable(false);
 		selectPhoto.setBackground(Color.decode("#FFF34C"));
 		selectPhoto.setFont(new Font("Helvetiva", Font.PLAIN, 15));
